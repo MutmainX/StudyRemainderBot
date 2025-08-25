@@ -1,0 +1,29 @@
+-- Create the table to store user reminders
+CREATE TABLE reminders (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, -- A unique ID for each reminder
+  user_id BIGINT NOT NULL,                           -- The user's unique Telegram ID
+  chat_id BIGINT NOT NULL,                           -- The chat ID to send the message to
+  
+  reminder_time TIME NOT NULL,                       -- The time of day for the reminder (e.g., 19:00)
+  days TEXT[] NOT NULL,                              -- The days of the week (e.g., {"0", "1", "2"})
+  custom_message TEXT DEFAULT 'Hey! Time to get back to studying! 📚', -- The user's message
+  created_at TIMESTAMPTZ DEFAULT NOW()              -- The date the reminder was created
+);
+
+-- A helper function to get a user's custom message or the default
+CREATE OR REPLACE FUNCTION get_user_message(p_user_id BIGINT)
+RETURNS TEXT AS $$
+DECLARE
+    message TEXT;
+BEGIN
+    SELECT custom_message INTO message
+    FROM reminders
+    WHERE user_id = p_user_id
+    LIMIT 1;
+
+    IF message IS NULL THEN
+        RETURN 'Hey! Time to get back to studying! 📚';
+    END IF;
+    RETURN message;
+END;
+$$ LANGUAGE plpgsql;
