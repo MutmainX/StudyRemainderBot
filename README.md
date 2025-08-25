@@ -76,10 +76,13 @@ Follow these instructions to get a copy of the bot up and running for your own u
     pip install -r requirements.txt
     ```
 
-4.  **Replace keys in places:**
-5.  
+4.  **Replace with keys :**
+SUPABASE_URL = "replace with your SUPABASE_URL"  
+SUPABASE_KEY = "Add your supabase url here" 
+TELEGRAM_TOKEN = "replace with your TELEGRAM_TOKEN"  
+6.  
 
-6.  **Run the bot locally:**
+7.  **Run the bot locally:**
     ```bash
     python bot.py
     ```
@@ -87,4 +90,10 @@ Follow these instructions to get a copy of the bot up and running for your own u
 ---
 
 ### ☁️ You can deploy it with Replit for free
+
+Create new py project there
+Paste the Code
+Install dependecies
+Add keys in Secrets
+Deploy
 
