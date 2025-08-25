@@ -14,10 +14,15 @@ from telegram.ext import (
     filters,
 )
 from supabase import create_client, Client
+#for local deploy
+# SUPABASE_URL = "replace with your SUPABASE_URL"  
+# SUPABASE_KEY = "Add your supabase url here" 
+# TELEGRAM_TOKEN = "replace with your TELEGRAM_TOKEN"  
 
-SUPABASE_URL = "replace with your SUPABASE_URL"  
-SUPABASE_KEY = "Add your supabase url here" 
-TELEGRAM_TOKEN = "replace with your TELEGRAM_TOKEN"  
+#for render deploy
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 
 # Initialize Supabase client
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -331,3 +336,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
