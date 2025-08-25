@@ -8,7 +8,7 @@
 
 ## ➡️ Access the Bot
 
-You can interact with the live/testing version of this bot on Telegram that i am running locally and it can face downtimes but if remainders set, they keep working even if bot stopped working (someone interested can help me deploy it online to keep it running permanently):
+You can interact with the live version of this bot on Telegram(I can keep it running even if it gets just thousand active users,otherwise I will no longer maintain it) : 
 
 ### **[t.me/studyremainderbot](https://t.me/studyremainderbot)**
 
@@ -65,7 +65,7 @@ You can interact with the live/testing version of this bot on Telegram that i am
     ```bash
     pip install -r requirements.txt
     ```
-
+3. **Edit out the "for local deploy" comments while remove render deploy lines**
 4.  **Replace with keys :**
 SUPABASE_URL = "replace with your SUPABASE_URL"  
 SUPABASE_KEY = "Add your supabase url here" 
@@ -79,5 +79,5 @@ TELEGRAM_TOKEN = "replace with your TELEGRAM_TOKEN"
 8.  ## Set Remainders. Once set, you will keep getting remainders even after you close local server
 ---
 
-### ☁️ You can deploy it online through various platforms
+### ☁️ You can deploy it online through various platforms like Render
 
