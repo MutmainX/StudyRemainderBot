@@ -1,6 +1,7 @@
 import logging
 import os
-from datetime import time
+from datetime import time, datetime
+import pytz
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
@@ -14,12 +15,9 @@ from telegram.ext import (
 )
 from supabase import create_client, Client
 
-# paste your keys here---
-
-SUPABASE_URL = os.environ['SUPABASE_URL']
-SUPABASE_KEY = os.environ['SUPABASE_KEY']
-TELEGRAM_TOKEN = os.environ['TELEGRAM_TOKEN']
-
+SUPABASE_URL = "replace with your SUPABASE_URL"  
+SUPABASE_KEY = "Add your supabase url here" 
+TELEGRAM_TOKEN = "replace with your TELEGRAM_TOKEN"  
 
 # Initialize Supabase client
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -164,7 +162,10 @@ async def select_hour(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int
     if ampm == 'AM' and hour == 12: # Midnight case
         hour = 0
 
-    reminder_time_obj = time(hour, int(minute))
+    user_timezone = pytz.timezone('Asia/Karachi')  # Default timezone, can be changed dynamically
+    user_time = datetime.now(user_timezone).replace(hour=hour, minute=int(minute), second=0, microsecond=0)
+    utc_time = user_time.astimezone(pytz.utc)
+    reminder_time_obj = utc_time.time()
     days_tuple = context.user_data["days"]
     
     # Save to database
@@ -281,7 +282,10 @@ async def reload_jobs_from_db(application: Application):
         for rem in response.data:
             try:
                 chat_id = rem['chat_id']
-                reminder_time = time.fromisoformat(rem['reminder_time'])
+                timezone = pytz.timezone(rem.get('timezone', 'Asia/Karachi'))
+                utc_time = datetime.combine(datetime.utcnow().date(), time.fromisoformat(rem['reminder_time']))
+                local_time = utc_time.astimezone(timezone)
+                reminder_time = local_time.time()
                 days = tuple(int(d) for d in rem['days'])
                 message = rem['custom_message']
                 reminder_id = rem['id']
