@@ -41,16 +41,15 @@ logger = logging.getLogger(__name__)
 
 # helper functions for database
 
-# --- NEW CORRECT VERSION ---
-async def schedule_reminder(job_queue, chat_id: int, reminder_time: time, days: tuple, message: str, reminder_id: int):
+async def schedule_reminder(context: ContextTypes.DEFAULT_TYPE, chat_id: int, reminder_time: time, days: tuple, message: str, reminder_id: int):
     """Schedules a new reminder job."""
     job_name = f"reminder_{reminder_id}"
-    job_queue.run_daily(
+    context.job_queue.run_daily(
         callback=send_reminder,
         time=reminder_time,
         days=days,
         chat_id=chat_id,
-        user_id=chat_id, 
+        user_id=chat_id, # Assuming user_id is the same as chat_id for private chats
         name=job_name,
         data={"message": message}
     )
@@ -290,27 +289,10 @@ async def reload_jobs_from_db(application: Application):
             except Exception as e:
                 logger.error(f"Failed to reload job {rem.get('id')}: {e}")
 
-# --- NEW CORRECT VERSION ---
-async def reload_jobs_from_db(application: Application):
-    """Loads all reminders from DB and schedules them on bot start."""
-    logger.info("Reloading jobs from database...")
-    response = supabase.table("reminders").select("*").execute()
-    if response.data:
-        for rem in response.data:
-            try:
-                chat_id = rem['chat_id']
-                reminder_time = time.fromisoformat(rem['reminder_time'])
-                days = tuple(int(d) for d in rem['days'])
-                message = rem['custom_message']
-                reminder_id = rem['id']
-                # Pass the job_queue directly from the application object
-                await schedule_reminder(application.job_queue, chat_id, reminder_time, days, message, reminder_id)
-            except Exception as e:
-                logger.error(f"Failed to reload job {rem.get('id')}: {e}")
-                
+
 def main() -> None:
     """Run the bot."""
-    # The new post_init parameter tells the bot to run our function AFTER it's ready
+    
     application = Application.builder().token(TELEGRAM_TOKEN).post_init(reload_jobs_from_db).build()
 
     # Conversation handler for setting reminders
@@ -341,8 +323,7 @@ def main() -> None:
     application.add_handler(CallbackQueryHandler(perform_delete, pattern="^del_"))
     
 
-    application.run_polling(drop_pending_updates=True) # Also keeping this from before
+    application.run_polling(drop_pending_updates=True) 
 
 if __name__ == "__main__":
-
     main()
