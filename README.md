@@ -1,7 +1,7 @@
 # 📚 Telegram Study Reminder Bot
 
 
-##A simple yet powerful Telegram bot designed to help students **avoid distractions** and stay on track with their study schedule by sending timely, customizable reminders.
+## A simple yet powerful Telegram bot designed to help students **avoid distractions** and stay on track with their study schedule by sending timely, customizable reminders.
 
 
 ---
