@@ -1,4 +1,4 @@
-# 📚 Telegram Study Reminder Bot
+# 📚 Study Reminder Bot Telegram
 
 
 ## A simple yet powerful Telegram bot designed to help students **avoid distractions** and stay on track with their study schedule by sending timely, customizable reminders.
@@ -50,7 +50,7 @@ You can interact with the live/testing version of this bot on Telegram that i am
 ### 2. Set Up the Supabase Database
 
 1.  Go to [Supabase.com](https://supabase.com) and create a new project.
-2.  Go to the **SQL Editor** and run the SQL query found in the `supabase table.txt` file of this repository to create the `reminders` table.
+2.  Go to the **SQL Editor** and run the SQL query found in the `supabase_table.txt` file of this repository to create the `reminders` table.
 3.  Go to **Project Settings > API**. Find and save your **Project URL** and your `anon` `public` **API Key**.
 
 ### 3. Local Setup & Running
