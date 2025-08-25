@@ -8,7 +8,7 @@
 
 ## ➡️ Access the Bot
 
-You can interact with the live version of this bot on Telegram(I can keep it running even if it gets just thousand active users,otherwise I will no longer maintain it) : 
+You can interact with the live/testing version of this bot on Telegram(I can keep it running even if it gets just thousand active users,otherwise I will no longer maintain it) : 
 
 ### **[t.me/studyremainderbot](https://t.me/studyremainderbot)**
 
