@@ -8,7 +8,7 @@
 
 ## ➡️ Access the Bot
 
-You can interact with the live/testing version of this bot on Telegram that i am running locally and it can face downtimes(someone interested can help me deploy it online to keep it running permanently):
+You can interact with the live/testing version of this bot on Telegram that i am running locally and it can face downtimes but if remainders set, they keep working even if bot stopped working (someone interested can help me deploy it online to keep it running permanently):
 
 ### **[t.me/studyremainderbot](https://t.me/studyremainderbot)**
 
