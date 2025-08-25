@@ -8,7 +8,7 @@
 
 ## ➡️ Access the Bot
 
-You can interact with the live version of this bot on Telegram:
+You can interact with the live/testing version of this bot on Telegram that i am running locally and it can face downtimes(someone interested can help me deploy it online to keep it running permanently):
 
 ### **[t.me/studyremainderbot](https://t.me/studyremainderbot)**
 
@@ -35,21 +35,11 @@ You can interact with the live version of this bot on Telegram:
 - **Language:** Python 3
 - **Telegram Library:** `python-telegram-bot`
 - **Database:** Supabase (Free Tier PostgreSQL)
-- **Hosting:** Render (Free Tier)
+- **Hosting:** Locally or host services
 
 ---
 
 ## 🚀 Getting Started
-
-Follow these instructions to get a copy of the bot up and running for your own use.
-
-### Prerequisites
-
-- Python 3.8 or higher
-- A Telegram account
-- A Supabase account (free)
-- A Render account (free)
-- Git
 
 ### 1. Set Up the Bot on Telegram
 
@@ -60,7 +50,7 @@ Follow these instructions to get a copy of the bot up and running for your own u
 ### 2. Set Up the Supabase Database
 
 1.  Go to [Supabase.com](https://supabase.com) and create a new project.
-2.  Go to the **SQL Editor** and run the SQL query found in the `supabase table` file of this repository to create the `reminders` table.
+2.  Go to the **SQL Editor** and run the SQL query found in the `supabase table.txt` file of this repository to create the `reminders` table.
 3.  Go to **Project Settings > API**. Find and save your **Project URL** and your `anon` `public` **API Key**.
 
 ### 3. Local Setup & Running
@@ -86,14 +76,8 @@ TELEGRAM_TOKEN = "replace with your TELEGRAM_TOKEN"
     ```bash
     python bot.py
     ```
-
+8.  ## Set Remainders. Once set, you will keep getting remainders even after you close local server
 ---
 
-### ☁️ You can deploy it with Replit for free
-
-Create new py project there
-Paste the Code
-Install dependecies
-Add keys in Secrets
-Deploy
+### ☁️ You can deploy it online through various platforms
 
