@@ -12,7 +12,7 @@ You can interact with the live/testing version of this bot on Telegram(I can kee
 
 ### **[t.me/studyremainderbot](https://t.me/studyremainderbot)**
 
-### update: I cant financially to keep it deployed online with third party services, so this bot may not work anymore on telegram but you can run it yourself locally with instruction provided here. I will keep updating this and adding new features and fixing bugs.
+**update: I cant financially to keep it deployed online with third party services, so this bot may not work anymore on telegram but you can run it yourself locally with instruction provided here. I will keep updating this and adding new features and fixing bugs**
 
 ---
 
